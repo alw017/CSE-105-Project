@@ -40,6 +40,21 @@ q2;
 END_SECTION
 ```
 
+## How the Program Works
+
+The program is self-contained in the script main.py. The script takes a filename, reads the contents inside, and executes several steps.
+
+1. Lexing: The program has a simple Lexer object which splits up string in the input file into tokens, returned as a list of strings to the program. For the string above, the lexer output would look something like `["q1", "q2", "END_SECTION", "abc", ...and more]`.
+
+2. DFA Construction: Here, the program constructs an instance of a DFA. It defines 5 variables each corresponding to a variable in the formal definition of a DFA. From there, we populate the variables by looking through the tokens. Each set of strings between `END_SECTION`s represents a certain set of information. For example, the first set of strings designate state names. The second designates our input alphabet. The third designates the transitions between states. 
+
+Notably, the data structure of state transitions was designed to make lookup as easy as possible. To find the next state starting from a given state s, and given a character input x, you can query the state transitions dictionary first for another dictionary storing all of transitions going out from s, and then after querying this dictionary by the input x, you are given the exact destination state. This makes creating the graph traversal algorithms much easier.
+
+The last two variables are pretty self explanatory, a string specifying the start state name, and a set of states designating accept states.
+
+3. Checking Emptiness: This program checks DFA emptiness by running graph search on the state diagram of the DFA, starting from the given start state. After this graph search, we have a set of all reachable states, which we then check whether this set shares no elements with the designated accept states. If there are no shared elements, then the DFA must recognize an empty set.
+
+
 # Example Strings
 
 ## Example in the Set of Empty DFAs
