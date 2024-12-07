@@ -77,7 +77,7 @@ This DFA recognizes the language defined by the Regular Expression: `1*0+1+`. On
 
 ## Screenshot Example of Running Script
 
-To test the code yourself, simply install main.py, and create a .txt file describing a valid DFA. 
+To test the code yourself, simply install main.py, and create a .txt file describing a valid DFA. Then run `python main.py <yourfile>.txt` 
 
 ![](./RunningExample.png)
 
