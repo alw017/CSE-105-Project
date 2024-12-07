@@ -4,7 +4,6 @@ import re
 class Lexer:
     def __init__(self, string):
         self.string = string.replace('\n','').replace('\r','').replace(' ', '')
-        print(self.string)
         self.line = 0
         self.index = 0
     

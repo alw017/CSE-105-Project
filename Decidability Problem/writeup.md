@@ -75,6 +75,10 @@ This DFA recognizes the language defined by the Regular Expression: `1*0+1+`. On
 
 # Source Code
 
+## Screenshot Example of Running Script
+
+![](./RunningExample.png)
+
 ```
 import sys
 import re
