@@ -77,6 +77,8 @@ This DFA recognizes the language defined by the Regular Expression: `1*0+1+`. On
 
 ## Screenshot Example of Running Script
 
+To test the code yourself, simply install main.py, and create a .txt file describing a valid DFA. 
+
 ![](./RunningExample.png)
 
 ```
@@ -86,7 +88,6 @@ import re
 class Lexer:
     def __init__(self, string):
         self.string = string.replace('\n','').replace('\r','').replace(' ', '')
-        print(self.string)
         self.line = 0
         self.index = 0
     
@@ -141,25 +142,25 @@ def run(file):
             case 3: # defining state transitions
                 transition = re.split('-|,', token)
                 if (len(transition) != 3):
-                    print("Error! Transition token had incorrect format", token)
+                    raise Exception("Error! Transition token had incorrect format "+ token)
                 else:
                     if transition[0] in definedStates and transition[1] in definedStates and transition[2] in alphabet:
                         stateTransitions[transition[0]][transition[2]] = transition[1]
                     else:
-                        print("Error! Transition token tried to specify a transition using an undefined state or invalid input character")
+                        raise Exception("Error! Transition token tried to specify a transition using an undefined state or invalid input character")
             case 4: # defining start state
                 if len(start) != 0:
-                    print("Error! More than one start state defined")
+                    raise Exception("Error! More than one start state defined")
                     continue
                 start = token
             case 5: # defining accept states
                 if (token in definedStates):
                     acceptStates.add(token)
                 else:
-                    print("Error! Specified accept state", token, "is not defined!")
+                    raise Exception("Error! Specified accept state " + token + " is not defined!")
     for state in stateTransitions:
         if len(stateTransitions[state].keys()) != len(alphabet):
-            print("Error! not enough transitions defined for state", state)
+            raise Exception("Error! not enough transitions defined for state " + state)
     return (definedStates, alphabet, stateTransitions, start, acceptStates)
 
 
@@ -192,6 +193,8 @@ def main():
                 print("The specified DFA is nonempty")
     except FileNotFoundError:
         print("Specified file not found.")
+    except Exception as e:
+        print("Program failed with error: \"" + str(e) + "\"")
 
 main()
 ```
