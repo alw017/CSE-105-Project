@@ -52,6 +52,8 @@ q1;END_SECTION
 q2;END_SECTION
 ```
 
+![](./DFA_Empty.png)
+
 There is no way to reach the accept state `q2` from the start state `q1`, so we know that this DFA must recognize the empty set.
  
 ## Example not in the Set of Empty DFAs
@@ -66,5 +68,7 @@ q4-q4,0;q4-q4,1;END_SECTION
 q1;END_SECTION
 q3;END_SECTION
 ```
+
+![](./DFA_NonEmpty.png)
 
 This DFA recognizes the language defined by the Regular Expression: `1*0+1+`. One example of a string accepted is "01". Thus it is not in the Set E_DFA.
