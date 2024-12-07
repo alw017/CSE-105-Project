@@ -18,7 +18,7 @@ A string should consist of 5 sections:
 
 Each of these sections are separated by the string `END_SECTION`, which is a reserved word and cannot be used as a state name.
 
-Note that on top of the reserved word `END_SECTION`, the symbol `;` also cannot be used in state names or the alphabet. All whitespaces are ignored.
+Note that on top of the reserved word `END_SECTION`, the symbol `;` also cannot be used in state names or the alphabet. Note that all whitespaces are ignored, so a defining a state as `state name;` will be interpreted as `statename;`
 
 Thus an example string would look like such:
 ```
@@ -72,3 +72,6 @@ q3;END_SECTION
 ![](./DFA_NonEmpty.png)
 
 This DFA recognizes the language defined by the Regular Expression: `1*0+1+`. One example of a string accepted is "01". Thus it is not in the Set E_DFA.
+
+# Source Code
+
