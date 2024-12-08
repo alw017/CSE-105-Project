@@ -171,6 +171,7 @@ To test the code yourself, install main.py and create a .txt file fully describi
 ![](./example%20running%20screenshot.png)
 
 Note that for the output of the program on `InATM.txt`, I have manually created a state diagram to show the result.
+
 ![](./example1output.png)
 
 ## Code
