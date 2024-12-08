@@ -103,13 +103,10 @@ def main():
     try:
         with open(filename, "r") as file:
             dfa = run(file)
-            if isEmpty(dfa):
-                print("The specified DFA is empty")
-            else:
-                print("The specified DFA is nonempty")
+            return isEmpty(dfa)
     except FileNotFoundError:
-        print("Specified file not found.")
-    except Exception as e:
-        print("Program failed with error: \"" + str(e) + "\"")
+        return False
+    except Exception:
+        return False
 
-main()
+print(main())

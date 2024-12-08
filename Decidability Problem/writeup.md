@@ -18,7 +18,7 @@ A string should consist of 5 sections:
 
 Each of these sections are separated by the string `END_SECTION`, which is a reserved word and cannot be used as a state name.
 
-Note that on top of the reserved word `END_SECTION`, the symbol `;` also cannot be used in state names or the alphabet. Note that all whitespaces are ignored, so a defining a state as `state name;` will be interpreted as `statename;`
+Note that on top of the reserved word `END_SECTION`, and the symbols `;`, `-`, `,` also cannot be used in state names or the alphabet. Note that all whitespaces are ignored, so a defining a state as `state name;` will be interpreted as `statename;` 
 
 Thus an example string would look like such:
 ```
@@ -54,6 +54,7 @@ The last two variables are pretty self explanatory, a string specifying the star
 
 3. Checking Emptiness: This program checks DFA emptiness by running graph search on the state diagram of the DFA, starting from the given start state. After this graph search, we have a set of all reachable states, which we then check whether this set shares no elements with the designated accept states. If there are no shared elements, then the DFA must recognize an empty set.
 
+If this program encounters an invalid string, it will throw an exception and exit. This should be implicitly interpreted as not being in the set of E_DFA.
 
 # Example Strings
 
