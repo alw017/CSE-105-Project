@@ -164,6 +164,17 @@ Note that our specified input string ε, is rejected by this Turing Machine. Thu
 
 # Source Code
 
+## Running Examples
+
+To test the code yourself, install main.py and create a .txt file fully describing a Turing machine or otherwise. Then run `python main.py <yourfile>.txt`
+
+![](./example%20running%20screenshot.png)
+
+Note that for the output of the program on `InATM.txt`, I have manually created a state diagram to show the result.
+![](./example1output.png)
+
+## Code
+
 ```
 import sys
 import re
@@ -336,7 +347,7 @@ def run(file):
 def main():
     if len(sys.argv) != 2:
        print("Invalid Number of Arguments " + str(len(sys.argv)) + " received, 2 expected.")
-       return
+       return NON_HALTING_TM_STRING
     filename = sys.argv[1]
     try:
         with open(filename, "r") as file:

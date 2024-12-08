@@ -169,7 +169,7 @@ def run(file):
 def main():
     if len(sys.argv) != 2:
        print("Invalid Number of Arguments " + str(len(sys.argv)) + " received, 2 expected.")
-       return
+       return NON_HALTING_TM_STRING
     filename = sys.argv[1]
     try:
         with open(filename, "r") as file:

@@ -97,6 +97,8 @@ To test the code yourself, simply install main.py, and create a .txt file descri
 
 ![](./RunningExample.png)
 
+## Code
+
 ```
 import sys
 import re
