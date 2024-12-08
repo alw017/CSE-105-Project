@@ -62,9 +62,11 @@ Then, it adds two main things:
 
 Then, it connects the end of these two steps to the original input Turing machine, to simulate the input machine on the specified input string.
 
-The program requires a Turing machine, where all possible transitions are explicitly written out in the transition section, and returns a Turing machine in the following format:
+The program requires a Turing machine, where all possible transitions are explicitly written out in the transition section, and the assumed convention is that all transitions from the reject state self loop for all possible tape reads.
 
-In seven sections, ended with a `END_SECTION` keyword:
+Then the program returns a Turing machine in the following format:
+
+In seven sections, each ended with a `END_SECTION` keyword:
 
 1. A list of semicolon separated unique strings indicating state names.
 2. A string of unique ASCII characters indicating the alphabet. The end is marked with a semicolon.
