@@ -181,6 +181,4 @@ def main():
         print (e)
         return NON_HALTING_TM_STRING
     
-
-
 print(main())
