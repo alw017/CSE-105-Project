@@ -8,7 +8,7 @@ I will be creating an implementation of a Mapping Reduction from A_TM to HALT_TM
 
 We define a valid input string as the following:
 
-A string should consist of 7 sections:
+A string should consist of 8 sections:
 
 1. A list of semicolon separated unique strings indicating state names.
 2. A string of unique ASCII characters indicating the alphabet. The end is marked with a semicolon.
@@ -19,7 +19,7 @@ A string should consist of 7 sections:
 7. A single string from the set of defined state names, defined as the reject state.
 8. The input string intended to be simulated with the defined Turing Machine.
 
-Any unspecified transitions in the list of item 4 are assumed to go to the reject state.
+In item 4 of the list, all transitions need to be explicitly stated.
 
 Each of these sections are separated by the string `END_SECTION`, which is a reserved word and cannot be used as a state name.
 
@@ -30,15 +30,19 @@ On top of this, state names cannot start with the prefix `internal`. This is to 
 Thus an example string would look like such:
 ```
 q1;
-q2;
 qacc;
 qrej;
 END_SECTION
-abc;
+a;
 END_SECTION
-abc_;
+a_;
 END_SECTION
-q1,_-q2,a,L;
+q1,_-qacc,a,L;
+q1,a-q1,a,L;
+qacc,_-qrej,_,L;
+qacc,_-qrej,_,L;
+qrej,_-qrej,_,L;
+qrej,_-qrej,_,L;
 END_SECTION
 q1;
 END_SECTION
@@ -46,7 +50,7 @@ qacc;
 END_SECTION
 qrej;
 END_SECTION
-thisisateststring;
+aaaaaa;
 END_SECTION
 ```
 
@@ -66,7 +70,7 @@ The program requires a Turing machine, where all possible transitions are explic
 
 Then the program returns a Turing machine in the following format:
 
-In seven sections, each ended with a `END_SECTION` keyword:
+A string composed of seven sections, each section ending with an `END_SECTION` keyword:
 
 1. A list of semicolon separated unique strings indicating state names.
 2. A string of unique ASCII characters indicating the alphabet. The end is marked with a semicolon.
@@ -80,7 +84,7 @@ The reject transitions in this new turing machine are implicit, and not all list
 
 ## Justification for Lack of Error Checking
 
-You might be wondering why there isn't very thorough checking for a valid turing machine. This is because, if the input turing machine is invalid, since we use it to create our new Turing machine, the new Turing machine must also be invalid, thus our function output cannot be in HALT_TM.
+You might be wondering why there isn't very thorough checking for a valid turing machine. The main reason is that if the input turing machine is invalid, the new Turing machine must also be invalid since we use it to create our new Turing machine, and thus our function output cannot be in HALT_TM.
 
 # Example Strings
 
@@ -166,7 +170,7 @@ Note that our specified input string ε, is rejected by this Turing Machine. Thu
 
 ## Running Examples
 
-To test the code yourself, install main.py and create a .txt file fully describing a Turing machine or otherwise. Then run `python main.py <yourfile>.txt`
+To test the code yourself, install main.py and create a .txt file fully describing a Turing machine or otherwise. You can reference InATM.txt as an example. Then run `python main.py <yourfile>.txt`
 
 ![](./example%20running%20screenshot.png)
 
