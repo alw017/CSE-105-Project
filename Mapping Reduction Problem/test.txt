@@ -22,5 +22,5 @@ qacc;
 END_SECTION
 qrej;
 END_SECTION
-01;
+;
 END_SECTION

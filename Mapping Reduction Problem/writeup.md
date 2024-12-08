@@ -79,3 +79,83 @@ The reject transitions in this new turing machine are implicit, and not all list
 ## Justification for Lack of Error Checking
 
 You might be wondering why there isn't very thorough checking for a valid turing machine. This is because, if the input turing machine is invalid, since we use it to create our new Turing machine, the new Turing machine must also be invalid, thus our function output cannot be in HALT_TM.
+
+# Example Strings
+
+## String in A_TM
+
+Consider the following string, which describes a Turing machine followed by an input string.
+
+```
+q1;
+qacc;
+qrej;
+END_SECTION
+01;
+END_SECTION
+01_;
+END_SECTION
+q1,1-qacc,_,R;
+q1,0-qacc,_,R;
+q1,_-qrej,_,R;
+qacc,_-qrej,_,R;
+qacc,1-qrej,_,R;
+qacc,0-qrej,_,R;
+qrej,_-qrej,_,R;
+qrej,1-qrej,_,R;
+qrej,0-qrej,_,R;
+END_SECTION
+q1;
+END_SECTION
+qacc;
+END_SECTION
+qrej;
+END_SECTION
+01;
+END_SECTION
+```
+
+The state diagram describing this turing machine is as follows:
+
+![](./Example%201.png)
+
+Note that our specified input string 01, is accepted by this Turing Machine. Thus, our string above must be in A_TM.
+
+## String not in A_TM
+
+Consider the following string, which describes a Turing machine followed by an input string.
+
+```
+q1;
+qacc;
+qrej;
+END_SECTION
+01;
+END_SECTION
+01_;
+END_SECTION
+q1,1-qacc,_,R;
+q1,0-qacc,_,R;
+q1,_-qrej,_,R;
+qacc,_-qrej,_,R;
+qacc,1-qrej,_,R;
+qacc,0-qrej,_,R;
+qrej,_-qrej,_,R;
+qrej,1-qrej,_,R;
+qrej,0-qrej,_,R;
+END_SECTION
+q1;
+END_SECTION
+qacc;
+END_SECTION
+qrej;
+END_SECTION
+;
+END_SECTION
+```
+
+The state diagram describing this turing machine is as follows:
+
+![](./Example%201.png)
+
+Note that our specified input string ε, is rejected by this Turing Machine. Thus, our string above cannot be in A_TM.
