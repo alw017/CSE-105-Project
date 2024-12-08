@@ -170,7 +170,7 @@ To test the code yourself, install main.py and create a .txt file fully describi
 
 ![](./example%20running%20screenshot.png)
 
-Note that for the output of the program on `InATM.txt`, I have manually created a state diagram to show the result.
+Note that for the output of the program on `InATM.txt`, I have manually created a state diagram to show the result. The names of states with the internal- prefix have been shortened for readability, and the new reject state, called NewReject is not shown, although it is the designated reject state for this state diagram.
 
 ![](./example1output.png)
 
